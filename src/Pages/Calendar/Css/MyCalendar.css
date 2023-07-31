@@ -1,0 +1,16 @@
+.wraper-calendar{
+    width: 90%;
+    background-color: antiquewhite;
+}
+
+.wraper-calendar .fc-header-toolbar.fc-toolbar{
+    align-items: center;
+    align-items: center;
+    margin: auto 0;
+    justify-content: space-between;
+    height: 74px;
+}
+
+.wraper-calendar .fc-toolbar-chunk{
+    display: flex;
+}

@@ -63,22 +63,23 @@ const Step3 = ({ formStep, prevFormStep }) => {
     formState: { errors },
     register,
   } = useForm({ mode: "all", resolver: yupResolver(schema) });
-  useEffect(() => {
-    const storageRef = ref(storage, "avatarRandom");
-    listAll(storageRef)
-      .then((res) => {
-        const promises = res.items.map((itemRef) =>
-          getDownloadURL(itemRef).then((url) => url)
-        );
-        Promise.all(promises).then((urls) => {
-          setArraylistImages(urls);
-
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const storageRef = ref(storage, "avatarRandom");
+  //   console.log("storageRef", storageRef);
+  //   listAll(storageRef)
+  //     .then((res) => {
+  //       const promises = res.items.map((itemRef) =>
+  //         getDownloadURL(itemRef).then((url) => url)
+  //       );
+  //       Promise.all(promises).then((urls) => {
+  //         setArraylistImages(urls);
+  //         console.log("ArraylistImages", arrayListImages);
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const onSubmit = async (values) => {
     messageApi.open({
@@ -89,6 +90,8 @@ const Step3 = ({ formStep, prevFormStep }) => {
     const usersCol = collection(db, "users");
     const q = query(usersCol, where("username", "==", data.username));
     const querySnapshot = await getDocs(q);
+    console.log('usersCol', querySnapshot);
+
     if (querySnapshot.size === 0) {
       setTimeout(() => {
         if (values.password === values.ConfirmPassword) {
@@ -96,11 +99,11 @@ const Step3 = ({ formStep, prevFormStep }) => {
           createUserWithEmailAndPassword(auth, data.email, values.password)
             .then((userCredential) => {
               sendEmailVerification(userCredential.user);
-              // alert("Vui lòng check email");
+              alert("Vui lòng check email");
               const usersCol = collection(db, "users");
               addDoc(usersCol, {
                 bio: "",
-                avatarUrl: arrayListImages[randomIndex],
+                avatarUrl: 'arrayListImages[randomIndex]',
                 email: data.email,
                 firstname: data.firstname,
                 lastname: data.lastname,

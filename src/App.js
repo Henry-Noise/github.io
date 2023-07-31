@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Layouts/homepage/HomePage";
 import Signinup from "./Pages/Signin_Signup/Index";
@@ -26,6 +26,8 @@ import Short from "./Pages/ShortVideo/Short";
 import ShortItem from "./Pages/ShortVideo/ShortItem/ShortItem";
 import ListChatbot from "./Pages/Chatbot/List";
 import Error404 from "./Pages/Error404/Error404";
+import MyCalendar from './Pages/Calendar/MyCalendar';
+
 function App() {
   return (
     <Routes>
@@ -65,6 +67,8 @@ function App() {
         <Route path="/Chatbot" element={<ListChatbot />}>
           <Route path=":id" element={<Chatbot />} />
         </Route>
+        <Route path="/calendar" element={<MyCalendar/>}>
+        </Route>
         <Route path="/Profile/:id" element={<PersonalInformation />}>
           <Route
             path="/Profile/:id/:idPost"
@@ -87,6 +91,7 @@ function App() {
             </Route>
           </Route>
         </Route>
+       
       </Route>
       <Route path="*" element={<Error404/>} />
     </Routes>

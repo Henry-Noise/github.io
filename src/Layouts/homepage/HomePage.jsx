@@ -19,6 +19,7 @@ import icon_short from "../../img/vuesax/linear/video-square.png";
 import icon_friends from "../../img/vuesax/linear/friends.svg";
 import "../homepage/Homepage.css";
 import icon_Chatbot from "../../img/trash/comment-question.png";
+import icon_Calendar from "../../img/vuesax/linear/Calendar.svg";
 // import Signin from '../../Pages/Signin';
 import { message } from "antd";
 import { getAuth, signOut } from "firebase/auth";
@@ -290,6 +291,17 @@ const HomePage = () => {
                           icon={icon_noti}
                           mode={menuCollapsed}
                           name="Notifications"
+                        />
+                      </Link>
+                      <Link
+                        className="link-nav icon-menu"
+                        onClick={handleCloseCollapse}
+                        to={"/calendar"}
+                      >
+                        <NavigationItem
+                          icon={icon_Calendar}
+                          mode={menuCollapsed}
+                          name="Calendar"
                         />
                       </Link>
                       <Link
