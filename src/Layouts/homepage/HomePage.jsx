@@ -10,16 +10,16 @@ import {
   query,
 } from "firebase/firestore";
 
-import icon_newsfeed from "../../img/menu_icon/group.svg";
-import icon_messenger from "../../img/menu_icon/icon_message.svg";
-import icon_noti from "../../img/menu_icon/icon__Component.svg";
+import icon_home from "../../img/iconMenu/home.svg";
+import icon_reviewBook from "../../img/iconMenu/reviewBook.svg";
+import icon_yours from "../../img/iconMenu/Yours.svg";
 import icon_logout from "../../img/menu_icon/logouticon.svg";
-import icon_search from "../../img/menu_icon/search-favorite.svg";
-import icon_short from "../../img/vuesax/linear/video-square.png";
+import icon_favorite from "../../img/iconMenu/favoritePlace.svg";
+import icon_book from "../../img/iconMenu/book-square.svg";
 import icon_friends from "../../img/vuesax/linear/friends.svg";
 import "../homepage/Homepage.css";
 import icon_Chatbot from "../../img/trash/comment-question.png";
-import icon_Calendar from "../../img/vuesax/linear/Calendar.svg";
+import icon_Calendar from "../../img/iconMenu/Calendar.svg";
 // import Signin from '../../Pages/Signin';
 import { message } from "antd";
 import { getAuth, signOut } from "firebase/auth";
@@ -207,7 +207,7 @@ const HomePage = () => {
                       className="logo"
                       title="Social Network"
                     >
-                      Social Network
+                      NoiseLess
                     </Link>
                   ) : (
                     <Link to="https://vawntan.web.app/">
@@ -243,9 +243,9 @@ const HomePage = () => {
                         onClick={handleCloseCollapse}
                       >
                         <NavigationItem
-                          icon={icon_newsfeed}
+                          icon={icon_home}
                           mode={menuCollapsed}
-                          name="Newsfeed"
+                          name="Home"
                         />
                       </Link>
                       {/* <Link
@@ -259,9 +259,9 @@ const HomePage = () => {
                       <Link className="link-nav icon-menu" onClick={handleSearch}>
                         <NavigationItem
                           link="#"
-                          icon={icon_search}
+                          icon={icon_reviewBook}
                           mode={menuCollapsed}
-                          name="Search"
+                          name="Diary"
                         />
                       </Link>
                       <Link
@@ -270,9 +270,9 @@ const HomePage = () => {
                         onClick={handleCloseCollapse}
                       >
                         <NavigationItem
-                          icon={icon_messenger}
+                          icon={icon_yours}
                           mode={menuCollapsed}
-                          name="Message"
+                          name="Yourself"
                         />
                       </Link>
                       <Link
@@ -280,19 +280,19 @@ const HomePage = () => {
                         to="Chatbot"
                         onClick={handleCloseCollapse}
                       >
-                        <img src={icon_Chatbot} className="icon icon-menu" />
-                        <span className="text-menu">Chatbot</span>
+                        <img src={icon_book} className="icon icon-menu" />
+                        <span className="text-menu">Review Book</span>
                       </Link>
-                      <Link
+                      {/* <Link
                         className="link-nav icon-menu"
                         onClick={handleNotification}
                       >
                         <NavigationItem
-                          icon={icon_noti}
+                          icon={''}
                           mode={menuCollapsed}
                           name="Notifications"
                         />
-                      </Link>
+                      </Link> */}
                       <Link
                         className="link-nav icon-menu"
                         onClick={handleCloseCollapse}
@@ -310,9 +310,9 @@ const HomePage = () => {
                         onClick={handleCloseCollapse}
                       >
                         <NavigationItem
-                          icon={icon_short}
+                          icon={icon_favorite}
                           mode={menuCollapsed}
-                          name="Short video"
+                          name="Favorite Place"
                         />
                       </Link>
                     </nav>
