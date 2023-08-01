@@ -1,16 +1,12 @@
 import { Route, Router, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Layouts/homepage/HomePage";
-import Signinup from "./Pages/Signin_Signup/Index";
+import Signinup from "./Pages/SignIn/Index";
 
 import Newsfeeds from "./Pages/Newsfeeds";
 
 import PrivateRouter from "./Components/CheckLogin/checklogin";
 import Chatbot from "./Pages/Chatbot/Chatbot";
-import InputEmail from "./Pages/Signin_Signup/Screens/ForgotPassword/InputEmail";
-import InputPassword from "./Pages/Signin_Signup/Screens/ForgotPassword/InputPassword";
-import Signin from "./Pages/Signin_Signup/Screens/Signin/index";
-import Signup from "./Pages/Signin_Signup/Screens/Signup/Signup";
 import PersonalInformation from "./Pages/personal-information";
 // import EditProfile from "./Pages/personal-information/EditProfile/EditProfile";
 // import Messenger from "./Pages/Messenger/Messenger";
@@ -32,16 +28,6 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Signinup />}>
-        <Route index element={<Signin />} />
-      </Route>
-      <Route path="/signup" element={<Signinup />}>
-        <Route index element={<Signup />} />
-      </Route>
-      <Route path="/forgotpassword" element={<Signinup />}>
-        <Route index element={<InputEmail />} />
-      </Route>
-      <Route path="/newpassword/:DocumentId" element={<Signinup />}>
-        <Route index element={<InputPassword />} />
       </Route>
       <Route
         path="/"
@@ -52,7 +38,7 @@ function App() {
         }
       >
         <Route exact path="/" element={<Newsfeeds />}>
-          <Route path="/:idPost" element={<ModalPost  />} />
+          <Route path="/:idPost" element={<ModalPost />} />
         </Route>
 
         {/* Cấu hình Route cho ModalPost */}
@@ -67,12 +53,12 @@ function App() {
         <Route path="/Chatbot" element={<ListChatbot />}>
           <Route path=":id" element={<Chatbot />} />
         </Route>
-        <Route path="/calendar" element={<MyCalendar/>}>
+        <Route path="/calendar" element={<MyCalendar />}>
         </Route>
         <Route path="/Profile/:id" element={<PersonalInformation />}>
           <Route
             path="/Profile/:id/:idPost"
-            element={<ModalPost  />}
+            element={<ModalPost />}
           />
         </Route>
         <Route path="/Friends" element={<Friends />}>
@@ -86,14 +72,14 @@ function App() {
             >
               <Route
                 path="/Friends/AllFriends/:id/:idPost"
-                element={<ModalPost  />}
+                element={<ModalPost />}
               />
             </Route>
           </Route>
         </Route>
-       
+
       </Route>
-      <Route path="*" element={<Error404/>} />
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }

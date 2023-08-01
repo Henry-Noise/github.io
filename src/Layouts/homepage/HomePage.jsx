@@ -248,14 +248,14 @@ const HomePage = () => {
                           name="Newsfeed"
                         />
                       </Link>
-                      <Link
+                      {/* <Link
                         className="link-nav"
                         to="/Friends"
                         onClick={handleCloseCollapse}
                       >
                         <img src={icon_friends} className="icon icon-menu" />
                         <span className="text-menu">Friends</span>
-                      </Link>
+                      </Link> */}
                       <Link className="link-nav icon-menu" onClick={handleSearch}>
                         <NavigationItem
                           link="#"
