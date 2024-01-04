@@ -15,15 +15,13 @@ import FriendsRequest from "./Pages/Friends/Components/FriendsRequest";
 import Home from "./Pages/Friends/Components/Home";
 import FriendsSuggestions from "./Pages/Friends/Components/Suggestions";
 import Friends from "./Pages/Friends/Friends";
-import Chatbox from "./Pages/Messenger/Chatbox";
-import Messenger from "./Pages/Messenger/Messenger";
 import ModalPost from "./Pages/Newsfeeds/Posts/modal/ModalPost";
 import Short from "./Pages/ShortVideo/Short";
 import ShortItem from "./Pages/ShortVideo/ShortItem/ShortItem";
 import ListChatbot from "./Pages/Chatbot/List";
 import Error404 from "./Pages/Error404/Error404";
 import MyCalendar from './Pages/Calendar/MyCalendar';
-
+import Diary from "./Pages/Diary/Diary";
 function App() {
   return (
     <Routes>
@@ -42,11 +40,8 @@ function App() {
         </Route>
 
         {/* Cấu hình Route cho ModalPost */}
-
-        <Route path="/Messenger" element={<Messenger />}>
-          <Route path="/Messenger/:id" element={<Chatbox />} />
+        <Route path="/Diary" element={<Diary />}>
         </Route>
-
         <Route path="/short" element={<Short />}>
           <Route path="/short/:id" element={<ShortItem />} />
         </Route>

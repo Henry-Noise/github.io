@@ -3,13 +3,13 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../Api/firebase";
-import UserItem from "./Components/UserItem";
-import CreatePost from "./CreatePost/Createpost";
-import Posts from "./Posts/Posts";
-import "./css/Newsfeed.css";
-import { getDocumentUser } from "./services/services";
+import UserItem from "../Newsfeeds/Components/UserItem";
+import CreatePost from "../Newsfeeds/CreatePost/Createpost";
+import Posts from "../Newsfeeds/Posts/Posts";
+import "../Newsfeeds/css/Newsfeed.css";
+import { getDocumentUser } from "../Newsfeeds/services/services";
 
-const Newsfeeds = () => {
+const Diary = () => {
   const currentId = localStorage.getItem("ID");
   const [dataPostAPI, setDataPostAPI] = useState([]);
   const [UserCurren, setUserCurren] = useState([]);
@@ -62,8 +62,18 @@ const Newsfeeds = () => {
       <div id="newsfeed">
         <div className="flex">
           <div className="posts ">
+            <div className="al-center">
+              <div className="gutter-row">
+                <CreatePost
+                  user={userGet}
+                  avatar={userGet === undefined ? "" : userGet.avatarUrl}
+                  typePost="Diary"
+                />
+              </div>
+            </div>
+
             <div>
-              <div className="gutter-row mt-30">
+              <div className="gutter-row">
                 <ul>
                   {dataPostAPI.map((e) => (
                     <li key={e.id}>
@@ -97,4 +107,4 @@ const Newsfeeds = () => {
   );
 };
 
-export default Newsfeeds;
+export default Diary;

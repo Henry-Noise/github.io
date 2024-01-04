@@ -24,9 +24,8 @@ import icon_Calendar from "../../img/iconMenu/Calendar.svg";
 import { message } from "antd";
 import { getAuth, signOut } from "firebase/auth";
 import { db } from "../../Api/firebase";
-import Notification from "../../Pages/Notifications/Notification";
+// import Notification from "../../Pages/Notifications/Notification";
 import logo from "../../img/smail logologo.svg";
-import Search from "../../Pages/Search/Search";
 import NavigationItem from "./NavigationItem";
 
 export const MenuStateContext = createContext();
@@ -76,7 +75,7 @@ const HomePage = () => {
       notificationCollapsed: false,
       searchCollapsed: true,
     });
-  }
+  };
 
   const handleNotification = () => {
     if (menuState.searchCollapsed && !menuState.notificationCollapsed) {
@@ -138,7 +137,7 @@ const HomePage = () => {
   };
   useEffect(() => {
     // return getData;
-    getData()
+    getData();
   }, []);
 
   const signOutt = () => {
@@ -176,27 +175,15 @@ const HomePage = () => {
   const value = {
     setMenuCollapsed,
     setMenuState,
-    menuState
-  }
+    menuState,
+  };
 
   return (
     // loading ? (<Spin indicator={antIcon} />) :
     <>
       <MenuStateContext.Provider value={value}>
-
         <div className="homepageLayout">
           {contextHolder}
-          <div
-            className={`layout-bg ${menuState.searchCollapsed ? "active" : ""}`}
-          >
-            <Search />
-          </div>
-          <div
-            className={`layout-bg ${menuState.notificationCollapsed ? "active" : ""
-              }`}
-          >
-            <Notification handleColsenoti={handleColsenoti} />
-          </div>
           <div className="flex">
             <div className="newsfeed-navigation">
               <div className={`tab-nav ${menuCollapsed ? "" : "active"}`}>
@@ -224,7 +211,9 @@ const HomePage = () => {
                 <div className={`nav-space ${menuCollapsed ? "" : "active"}`}>
                   <div className="tab-nav-menu">
                     <nav
-                      className={`nav-menu-list ${menuCollapsed ? "" : "active"}`}
+                      className={`nav-menu-list ${
+                        menuCollapsed ? "" : "active"
+                      }`}
                     >
                       <Link
                         onClick={handleCloseCollapse}
@@ -248,17 +237,12 @@ const HomePage = () => {
                           name="Home"
                         />
                       </Link>
-                      {/* <Link
-                        className="link-nav"
-                        to="/Friends"
+                      <Link
+                        className="link-nav icon-menu"
+                        to="Diary"
                         onClick={handleCloseCollapse}
                       >
-                        <img src={icon_friends} className="icon icon-menu" />
-                        <span className="text-menu">Friends</span>
-                      </Link> */}
-                      <Link className="link-nav icon-menu" onClick={handleSearch}>
                         <NavigationItem
-                          link="#"
                           icon={icon_reviewBook}
                           mode={menuCollapsed}
                           name="Diary"
@@ -283,16 +267,6 @@ const HomePage = () => {
                         <img src={icon_book} className="icon icon-menu" />
                         <span className="text-menu">Review Book</span>
                       </Link>
-                      {/* <Link
-                        className="link-nav icon-menu"
-                        onClick={handleNotification}
-                      >
-                        <NavigationItem
-                          icon={''}
-                          mode={menuCollapsed}
-                          name="Notifications"
-                        />
-                      </Link> */}
                       <Link
                         className="link-nav icon-menu"
                         onClick={handleCloseCollapse}
@@ -336,11 +310,12 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      <div className="Homepage-responsive">
-        <p>
-          Hehe tôi vẫn chưa up date cho màn hình này đâu :D Chở app sắp tới nhé
-        </p>
-      </div>
+        <div className="Homepage-responsive">
+          <p>
+            Hehe tôi vẫn chưa up date cho màn hình này đâu :D Chở app sắp tới
+            nhé
+          </p>
+        </div>
       </MenuStateContext.Provider>
     </>
   );

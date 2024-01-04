@@ -4,14 +4,22 @@ import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 const firebaseConfig = {
+  apiKey: "AIzaSyAJ9wLJHJvbdDbAy1r_Gct4hoNd18Ipi0E",
+  authDomain: "diaryofhenrrynoise.firebaseapp.com",
+  databaseURL: "https://diaryofhenrrynoise-default-rtdb.firebaseio.com",
+  projectId: "diaryofhenrrynoise",
+  storageBucket: "diaryofhenrrynoise.appspot.com",
+  messagingSenderId: "898748727873",
+  appId: "1:898748727873:web:77cb8817ba382d46e1bcc0",
+  measurementId: "G-FSLECMD25G",
 
-  apiKey: "AIzaSyDh_vZP_lS5VspuMo2F3qRVfaT0tGBrTEo",
-  authDomain: "myproject-793b7.firebaseapp.com",
-  projectId: "myproject-793b7",
-  storageBucket: "myproject-793b7.appspot.com",
-  messagingSenderId: "328085701313",
-  appId: "1:328085701313:web:4070c0c4d2ec1805f30a40",
-  measurementId: "G-FP65PP5VPS"
+  // apiKey: "AIzaSyDh_vZP_lS5VspuMo2F3qRVfaT0tGBrTEo",
+  // authDomain: "myproject-793b7.firebaseapp.com",
+  // projectId: "myproject-793b7",
+  // storageBucket: "myproject-793b7.appspot.com",
+  // messagingSenderId: "328085701313",
+  // appId: "1:328085701313:web:4070c0c4d2ec1805f30a40",
+  // measurementId: "G-FP65PP5VPS"
 
   // apiKey: "AIzaSyA8ZyVOHrJiWdDuZp7g1IS9TmSfyYaD_XY",
   // authDomain: "social-network-68ab1.firebaseapp.com",
