@@ -152,6 +152,7 @@
 .textGridPost {
   font-family: "IBM Plex Mono", monospace;
   margin-left: 5px;
+  color: #000181!important;
 }
 
 .PostPersonalInformation-Container:hover .time-profile {

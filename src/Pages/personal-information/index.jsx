@@ -16,6 +16,9 @@ import icon_qr from "../../img/qr/qrcode-scan.png";
 import icon_grid from "../../img/vuesax/linear/grid.svg";
 import icon_video from "../../img/vuesax/linear/video-play.svg";
 import EditProfile from "./EditProfile/EditProfile";
+import icon_diary from "../../img/iconMenu/reviewBook.svg";
+import icon_your from "../../img/iconMenu/Yours.svg";
+import icon_reviewBook from "../../img/iconMenu/reviewBook.svg";
 import "./PersonalInformation.css";
 import { AddFriend, removeFriend } from "./services/AddAndRemoveFriend";
 const PersonalInformation = () => {
@@ -24,6 +27,9 @@ const PersonalInformation = () => {
   const [Users, setUsers] = useState([]);
   const [UserCurren, setUserCurren] = useState([]);
   const [Test, setTest] = useState([]);
+  const [dataDiary, setDataDiary] = useState([]);
+  const [dataYourSelf, setDataYourSelf] = useState([]);
+  const [dataReviewBook, setDataReviewBook] = useState([]);
   const [listShort, setListShort] = useState([]);
   const [PostLength, setPostLength] = useState([]);
   const [friend, setFriend] = useState(false);
@@ -88,6 +94,12 @@ const PersonalInformation = () => {
           idPost: doc.id,
         });
       });
+      const dataDiary = cities.filter((item) => item.typePost === 'diary');
+      const dataYourSelf = cities.filter((item) => item.typePost === 'yourself');
+      const dataReviewBook = cities.filter((item) => item.typePost === 'ReviewBook');
+      setDataDiary(dataDiary);
+      setDataYourSelf(dataYourSelf);
+      setDataReviewBook(dataReviewBook);
       setTest(cities);
       setPostLength(cities.length);
     });
@@ -287,7 +299,7 @@ const PersonalInformation = () => {
           tabPosition="top"
           className="max-width"
           defaultActiveKey="1"
-          items={[icon_grid, icon_video].map((Icon, i) => {
+          items={[icon_diary,icon_reviewBook, icon_your,icon_grid, icon_video].map((Icon, i) => {
             const id = String(i + 1);
             if (id == 1) {
               return {
@@ -312,7 +324,76 @@ const PersonalInformation = () => {
                   </div>
                 ),
               };
-            } else {
+            } if (id == 2) {
+              return {
+                label: (
+                  <span className="wrapViewPosts">
+                    <img src={icon_diary} alt="" className="iconGridPost" />
+                    <span className="textGridPost">Diary</span>
+                  </span>
+                ),
+                key: id,
+                children: (
+                  <div className="PostPersonalInformation">
+                    {dataDiary.map((value, index) => (
+                      <div
+                        key={index}
+                        className="PostPersonalInformation-Container"
+                      >
+                        <img src={value.image} alt="" />
+                        <Link className="overlay" to={`${value.idPost}`}></Link>
+                      </div>
+                    ))}
+                  </div>
+                ),
+              };
+            } if (id == 3) {
+              return {
+                label: (
+                  <span className="wrapViewPosts">
+                    <img src={icon_your} alt="" className="iconGridPost" />
+                    <span className="textGridPost">YourSelf</span>
+                  </span>
+                ),
+                key: id,
+                children: (
+                  <div className="PostPersonalInformation">
+                    {dataYourSelf.map((value, index) => (
+                      <div
+                        key={index}
+                        className="PostPersonalInformation-Container"
+                      >
+                        <img src={value.image} alt="" />
+                        <Link className="overlay" to={`${value.idPost}`}></Link>
+                      </div>
+                    ))}
+                  </div>
+                ),
+              };
+            }if (id == 4) {
+              return {
+                label: (
+                  <span className="wrapViewPosts">
+                    <img src={icon_diary} alt="" className="iconGridPost" />
+                    <span className="textGridPost">ReviewBook</span>
+                  </span>
+                ),
+                key: id,
+                children: (
+                  <div className="PostPersonalInformation">
+                    {dataReviewBook.map((value, index) => (
+                      <div
+                        key={index}
+                        className="PostPersonalInformation-Container"
+                      >
+                        <img src={value.image} alt="" />
+                        <Link className="overlay" to={`${value.idPost}`}></Link>
+                      </div>
+                    ))}
+                  </div>
+                ),
+              };
+            }else {
               return {
                 label: (
                   <span className="wrapViewShorts">
