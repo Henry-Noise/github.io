@@ -8,7 +8,7 @@ import CreatePost from "../Newsfeeds/CreatePost/Createpost";
 import Posts from "../Newsfeeds/Posts/Posts";
 import { getDocumentUser } from "../Newsfeeds/services/services";
 
-const Yourself = () => {
+const ReviewBook = () => {
   const currentId = localStorage.getItem("ID");
   const [dataPostAPI, setDataPostAPI] = useState([]);
   const [UserCurren, setUserCurren] = useState([]);
@@ -27,8 +27,8 @@ const Yourself = () => {
         ...doc.data(),
         timeElapsed: doc.data().createdAt && moment(doc.data().createdAt.toDate()).fromNow()
       }));
-      const dataYourself = data.filter((item) => item.typePost === 'yourself');
-      setDataPostAPI(dataYourself);
+      const dataReviewBook = data.filter((item) => item.typePost === 'ReviewBook');
+      setDataPostAPI(dataReviewBook);
     });
     setInterval(() => {
       const q = query(postsCol, orderBy("createdAt", "desc"));
@@ -39,8 +39,8 @@ const Yourself = () => {
           createdAt: doc.data().createdAt.toDate(),
           timeElapsed: moment(doc.data().createdAt.toDate()).fromNow()
         }));
-        const dataYourself = data.filter((item) => item.typePost === 'yourself');
-        setDataPostAPI(dataYourself);
+        const dataReviewBook = data.filter((item) => item.typePost === 'ReviewBook');
+      setDataPostAPI(dataReviewBook);
       });
     }, 60000);
   }, []);
@@ -66,8 +66,8 @@ const Yourself = () => {
                 <CreatePost
                   user={userGet}
                   avatar={userGet === undefined ? "" : userGet.avatarUrl}
-                  typePost="yourself"
-                  messageCreatPost="What's on your mind?"
+                  typePost="ReviewBook"
+                  messageCreatPost="How do you feel about this book?"
                 />
               </div>
             </div>
@@ -94,4 +94,4 @@ const Yourself = () => {
   );
 };
 
-export default Yourself;
+export default ReviewBook;

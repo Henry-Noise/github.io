@@ -250,7 +250,7 @@ const HomePage = () => {
                       </Link>
                       <Link
                         className="link-nav icon-menu"
-                        to="Messenger"
+                        to="Yourself"
                         onClick={handleCloseCollapse}
                       >
                         <NavigationItem
@@ -261,7 +261,7 @@ const HomePage = () => {
                       </Link>
                       <Link
                         className="link-nav"
-                        to="Chatbot"
+                        to="ReviewBook"
                         onClick={handleCloseCollapse}
                       >
                         <img src={icon_book} className="icon icon-menu" />

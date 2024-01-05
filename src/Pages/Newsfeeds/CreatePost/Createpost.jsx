@@ -68,7 +68,7 @@ const CreatePost = (props) => {
             <img src={props.avatar} alt="" />
           </Link>
           <span onClick={handlePostModal}>
-            what do you think man.{props.userName}
+            {props.messageCreatPost}{props.userName}
           </span>
         </div>
       </FilterContext.Provider>

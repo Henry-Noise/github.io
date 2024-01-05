@@ -67,6 +67,7 @@ const Diary = () => {
                   user={userGet}
                   avatar={userGet === undefined ? "" : userGet.avatarUrl}
                   typePost="diary"
+                  messageCreatPost="Create new diary"
                 />
               </div>
             </div>
