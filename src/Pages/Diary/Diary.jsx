@@ -6,7 +6,6 @@ import { db } from "../../Api/firebase";
 import UserItem from "../Newsfeeds/Components/UserItem";
 import CreatePost from "../Newsfeeds/CreatePost/Createpost";
 import Posts from "../Newsfeeds/Posts/Posts";
-import "../Newsfeeds/css/Newsfeed.css";
 import { getDocumentUser } from "../Newsfeeds/services/services";
 
 const Diary = () => {
@@ -28,8 +27,8 @@ const Diary = () => {
         ...doc.data(),
         timeElapsed: doc.data().createdAt && moment(doc.data().createdAt.toDate()).fromNow()
       }));
-     setDataPostAPI(data);
-
+      const dataDiary = data.filter((item) => item.typePost === 'diary');
+      setDataPostAPI(dataDiary);
     });
     setInterval(() => {
       const q = query(postsCol, orderBy("createdAt", "desc"));
@@ -40,8 +39,8 @@ const Diary = () => {
           createdAt: doc.data().createdAt.toDate(),
           timeElapsed: moment(doc.data().createdAt.toDate()).fromNow()
         }));
-
-        setDataPostAPI(data);
+      const dataDiary = data.filter((item) => item.typePost === 'diary');
+        setDataPostAPI(dataDiary);
       });
     }, 60000);
   }, []);
@@ -67,7 +66,7 @@ const Diary = () => {
                 <CreatePost
                   user={userGet}
                   avatar={userGet === undefined ? "" : userGet.avatarUrl}
-                  typePost="Diary"
+                  typePost="diary"
                 />
               </div>
             </div>
@@ -87,19 +86,6 @@ const Diary = () => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="suggestions">
-            <div className="flex mt-40">
-              <h2 className="Sugget">Suggestions </h2>
-              <Link to="/Friends/Suggestions">See all</Link>
-            </div>
-            <hr />
-
-            <div className="flex mt-30">
-              <h2 className="Friends">Friends</h2>
-              <Link to="/Friends/AllFriends">See all</Link>
-            </div>
-            <hr />
           </div>
         </div>
       </div>

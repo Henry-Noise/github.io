@@ -14,6 +14,7 @@ const CreatePost = (props) => {
   const [tab, setTab] = useState(0);
   const [userData, setUserData] = useState({});
   const [inputData, setinputData] = useState("");
+  const [typePost,setTypePost] = useState(props.typePost)
   const [customFilter, setCustomFilter] = useState({
     contrast: 100,
     brightness: 100,
@@ -35,6 +36,7 @@ const CreatePost = (props) => {
     setCurrent,
     setModalState,
     SetimageFile,
+    setTypePost,
     inputData,
     customFilter,
     filterClass,
@@ -44,6 +46,7 @@ const CreatePost = (props) => {
     curent,
     currentId,
     imageFile,
+    typePost,
   };
     const getCurrentUser = async () => {
       const userRef = doc(collection(db, "users"), currentId);

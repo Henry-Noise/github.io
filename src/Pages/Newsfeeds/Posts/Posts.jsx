@@ -56,7 +56,6 @@ const Posts = ({ data }) => {
   const [isViewPost, setViewPost] = useState(false);
   const [heartActive, setHeartActive] = useState(false);
   const [idLikes, setIdLikes] = useState("");
-
   const [likesCount, setLikesCount] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [currentContent, setCurrentContent] = useState("");
@@ -76,10 +75,6 @@ const Posts = ({ data }) => {
     const getPostIem = onSnapshot(doc(db, "postItem", data.id), (doc) => {
       if (doc.exists) {
         setDefaultImg(doc.data()?.image);
-        setDataPostAPI({
-          id: doc.id,
-          ...doc.data(),
-        });
       } else {
         console.log("No such document!");
       }

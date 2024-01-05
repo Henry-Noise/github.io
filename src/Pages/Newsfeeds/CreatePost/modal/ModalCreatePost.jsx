@@ -24,6 +24,7 @@ const ModalCreatePost = () => {
   const {
     setinputData,
     setCurrent,
+    setTypePost,
     inputData,
     imageFile,
     imgResultRef,
@@ -32,6 +33,7 @@ const ModalCreatePost = () => {
     curent,
     SetimageFile,
     currentId,
+    typePost,
   } = useContext(FilterContext);
   const [messageApi, contextHolder] = message.useMessage();
   const PostData = (e) => {
@@ -58,37 +60,15 @@ const ModalCreatePost = () => {
                 authorAvatar: userData.avatarUrl,
                 authorName: userData.fullname,
                 content: inputData,
+                typePost:typePost,
                 image: url,
                 createdAt: serverTimestamp(),
-              }).then(async (docref) => {
-                const usersCol = collection(db, "notification");
-                let arr = [];
-                const postRefUser = doc(collection(db, "users"), currentId);
-                const postDocUser = await getDoc(postRefUser);
-                const fiend = postDocUser
-                  .data()
-                  .friend.filter((item) => item.status === 1);
-                fiend.map((value) => {
-                  arr = [...arr, value.id];
-                });
-                addDoc(usersCol, {
-                  sender: currentId,
-                  receiver: arr,
-                  avatarUrl: postDocUser.data().avatarUrl,
-                  fullname: postDocUser.data().fullname,
-                  messageTo: ``,
-                  messageFrom: `Your friend:  ${
-                    postDocUser.data().fullname
-                  } created a new post`,
-                  createAt: serverTimestamp(),
-                  idpost: docref.id,
-                  status: 3,
-                });
-              });
+              })
               setModalState(false);
               setinputData("");
               SetimageFile(null);
               setCurrent(0);
+              setTypePost("");
             });
           })
           .catch((error) => {
