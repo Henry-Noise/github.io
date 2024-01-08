@@ -422,7 +422,7 @@ const ModalPost = ({ linkTo }) => {
                       setCommentContent(e.target.value);
                     }}
                   />
-                  <button className="btn-commentPost">Post</button>
+                  <button className="btn-commentPost">Comment</button>
                 </form>
 
                 <div

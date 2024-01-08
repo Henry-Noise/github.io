@@ -78,19 +78,6 @@ const Newsfeeds = () => {
               </div>
             </div>
           </div>
-          <div className="suggestions">
-            <div className="flex mt-40">
-              <h2 className="Sugget">Suggestions </h2>
-              <Link to="/Friends/Suggestions">See all</Link>
-            </div>
-            <hr />
-
-            <div className="flex mt-30">
-              <h2 className="Friends">Friends</h2>
-              <Link to="/Friends/AllFriends">See all</Link>
-            </div>
-            <hr />
-          </div>
         </div>
       </div>
     </>

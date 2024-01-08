@@ -11,8 +11,8 @@
   background-color: #25252529;
 }
 .modal-viewPost {
-  width: 1300px;
-  height: 860px;
+  width: 1200px;
+  height: 740px;
   background: #ffffff;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -26,7 +26,7 @@
 }
 .img-viewPost {
   width: 750px;
-  height: 860px;
+  height: 740px;
   object-fit: cover;
   object-position: center;
   border-top-left-radius: 10px;
@@ -106,18 +106,18 @@
 .bottom-viewPost {
   position: fixed;
   /* bottom: 0.5%; */
-  height: 100px;
+  height: 120px;
   bottom: 0;
 }
 .line-viewPost2 {
-  width: 547px;
+  width: 514px;
   display: block;
   margin: 15px 53px 5px 0px;
   top: 240px;
   margin-bottom: 8px;
 }
 .line-viewPost3 {
-  width: 547px;
+  width: 514px;
   display: block;
   margin-bottom: 8px;
 }
@@ -243,6 +243,7 @@
 
 .comment-viewPost {
   margin-right: 4%;
+  width: 80%;
 }
 
 .comment-viewPost:focus {
@@ -254,7 +255,7 @@
   line-height: 12px;
   font-weight: 600;
   color: #33a06f;
-  margin-left: 13px;
+  /* margin-left: 6px; */
   cursor: pointer;
   outline: none;
   border: none;
