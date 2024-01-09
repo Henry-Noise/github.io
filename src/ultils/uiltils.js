@@ -5,3 +5,10 @@ export const SET_CURRENTID = (props)=> {
 export const REMOVE_CURRENT_ID = (props)=> {
    return localStorage.removeItem(props)
 };
+export const SET_LANGUAGE = (lang)=> {
+   return localStorage.setItem('LANGUAGE', lang)
+}
+
+export const GET_LANGUAGE = ()=> {
+   return localStorage.getItem('LANGUAGE')
+}

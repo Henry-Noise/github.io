@@ -1,4 +1,4 @@
-import { message, QRCode, Tabs } from "antd";
+import { message, QRCode, Select, Tabs } from "antd";
 import {
   addDoc,
   collection,
@@ -21,6 +21,7 @@ import icon_your from "../../img/iconMenu/Yours.svg";
 import icon_reviewBook from "../../img/iconMenu/reviewBook.svg";
 import "./PersonalInformation.css";
 import { AddFriend, removeFriend } from "./services/AddAndRemoveFriend";
+import TonggleChangeLang from "./ToggleChangeLang/TonggleChangeLang";
 const PersonalInformation = () => {
   const { id } = useParams();
   const [messageApi, contextHolder] = message.useMessage();
@@ -94,9 +95,13 @@ const PersonalInformation = () => {
           idPost: doc.id,
         });
       });
-      const dataDiary = cities.filter((item) => item.typePost === 'diary');
-      const dataYourSelf = cities.filter((item) => item.typePost === 'yourself');
-      const dataReviewBook = cities.filter((item) => item.typePost === 'ReviewBook');
+      const dataDiary = cities.filter((item) => item.typePost === "diary");
+      const dataYourSelf = cities.filter(
+        (item) => item.typePost === "yourself"
+      );
+      const dataReviewBook = cities.filter(
+        (item) => item.typePost === "ReviewBook"
+      );
       setDataDiary(dataDiary);
       setDataYourSelf(dataYourSelf);
       setDataReviewBook(dataReviewBook);
@@ -208,28 +213,7 @@ const PersonalInformation = () => {
             <div className="UserItem-Name">
               <span className="wrap-UserItem-Name">
                 {Users.fullname}{" "}
-                {friend ? (
-                  find ? (
-                    find.status === 1 ?
-                      <span
-                        className="btn btn-addFriend"
-                        onClick={onCancelRequest}
-                      >
-                        {"Unfriend"}
-                      </span> :
-                      <span
-                        className="btn btn-addFriend"
-                        onClick={onCancelRequest}
-                      >
-                        {"Cancel request"}
-                      </span>
-
-                  ) : (
-                    <span className="btn btn-addFriend" onClick={onAddFriend}>
-                      {"Add Friend"}
-                    </span>
-                  )
-                ) : (
+                {
                   <img
                     src={userEdit}
                     alt=""
@@ -237,14 +221,7 @@ const PersonalInformation = () => {
                       setIsModalActive(true);
                     }}
                   />
-                )}
-                {friend ? (
-                  <span className="btn btn-message" onClick={handleUserSelect}>
-                    {"Message"}
-                  </span>
-                ) : (
-                  ""
-                )}
+                }
                 <img
                   src={icon_qr}
                   alt=""
@@ -262,6 +239,7 @@ const PersonalInformation = () => {
                     />
                   </div>
                 )}
+                <TonggleChangeLang />
               </span>
               <div className="total">
                 {PostLength > 1 ? (
@@ -275,7 +253,7 @@ const PersonalInformation = () => {
                   <p>{listShort?.length} Short</p>
                 )}
                 {Users.friend?.filter((value) => value.status === 1).length >
-                  1 ? (
+                1 ? (
                   <p onClick={navigateFriends}>
                     {Users.friend?.filter((value) => value.status === 1).length}{" "}
                     Friends
@@ -299,7 +277,13 @@ const PersonalInformation = () => {
           tabPosition="top"
           className="max-width"
           defaultActiveKey="1"
-          items={[icon_diary,icon_reviewBook, icon_your,icon_grid, icon_video].map((Icon, i) => {
+          items={[
+            icon_diary,
+            icon_reviewBook,
+            icon_your,
+            icon_grid,
+            icon_video,
+          ].map((Icon, i) => {
             const id = String(i + 1);
             if (id == 1) {
               return {
@@ -324,7 +308,8 @@ const PersonalInformation = () => {
                   </div>
                 ),
               };
-            } if (id == 2) {
+            }
+            if (id == 2) {
               return {
                 label: (
                   <span className="wrapViewPosts">
@@ -347,7 +332,8 @@ const PersonalInformation = () => {
                   </div>
                 ),
               };
-            } if (id == 3) {
+            }
+            if (id == 3) {
               return {
                 label: (
                   <span className="wrapViewPosts">
@@ -370,7 +356,8 @@ const PersonalInformation = () => {
                   </div>
                 ),
               };
-            }if (id == 4) {
+            }
+            if (id == 4) {
               return {
                 label: (
                   <span className="wrapViewPosts">
@@ -393,7 +380,7 @@ const PersonalInformation = () => {
                   </div>
                 ),
               };
-            }else {
+            } else {
               return {
                 label: (
                   <span className="wrapViewShorts">

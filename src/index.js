@@ -9,6 +9,8 @@ import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import reducers from "./redux/reducers/reducers";
 import mySaga from "./redux/sagas/sagas";
+import { useTranslation } from 'react-i18next';
+import i18n from './i18n';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));

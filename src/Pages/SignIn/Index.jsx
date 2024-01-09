@@ -27,7 +27,7 @@ const Signinup = () => {
       setUsers(data)
     })
   }, []);
-  console.log("", Users);
+  console.log("12345", Users);
 
   //yup
   const schema = yup
