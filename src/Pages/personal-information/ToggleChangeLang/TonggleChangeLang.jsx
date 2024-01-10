@@ -18,7 +18,7 @@ const TonggleChangeLang = () => {
     },[])
 
     const changeLang=()=>{
-
+      console.log('nqhuy20',languageUser);
     }
   return (
     <div className="buttonChangeLang">
@@ -27,7 +27,7 @@ const TonggleChangeLang = () => {
         className="check-toggleLang check-toggle-round-flat"
         type="checkbox"
       ></input>
-      <label for="language-toggle" onClick={changeLang}>Language</label>
+      <label for="language-toggle" onClick={changeLang}></label>
       <span className="buttonChangeLang--on">VI</span>
       <span className="buttonChangeLang--off">EN</span>
     </div>
